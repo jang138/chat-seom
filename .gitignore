@@ -29,6 +29,11 @@ env/
 chatbot_env/
 .venv/
 
+# 데이터베이스
+data/
+*.sqlite
+*.sqlite3
+
 # IDE 설정
 .vscode/
 .idea/

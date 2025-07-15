@@ -85,7 +85,13 @@ def load_manual(db):
     for item in data:
         doc = Document(
             page_content=item['text_content'],
-            metadata=item['metadata']
+            metadata={
+                'id': item['id'],
+                'category': item['metadata']['category'],
+                'scenario': item['metadata']['scenario'],
+                'keywords': ', '.join(item['metadata']['keywords']),
+                'priority': item['metadata']['priority']
+            }
         )
         docs.append(doc)
     

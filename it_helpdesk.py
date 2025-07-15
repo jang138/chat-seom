@@ -78,9 +78,6 @@ def load_manual(db):
     with open("it_helpdesk_manual.json", 'r', encoding='utf-8') as f:
         data = json.load(f)
     
-    with open("it_helpdesk_manual.json", 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    
     docs = []
     for item in data:
         doc = Document(

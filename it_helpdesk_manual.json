@@ -1,0 +1,266 @@
+[
+  {
+    "id": "wifi_001",
+    "text_content": "와이파이 연결 문제를 받으면 먼저 현재 상태를 확인합니다. '현재 어떤 네트워크가 보이나요? 연결 시 어떤 오류 메시지가 나타나나요?'라고 물어보세요.",
+    "metadata": {
+      "category": "네트워크",
+      "scenario": "와이파이 연결 불가",
+      "step": 1,
+      "keywords": ["와이파이", "wifi", "연결", "인터넷", "무선"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "wifi_002", 
+    "text_content": "와이파이 연결 해결 단계: 1) 와이파이를 껐다 켜기 2) 네트워크 설정에서 해당 네트워크 삭제 후 재연결 3) 공유기 재시작 4) 네트워크 어댑터 재시작을 순서대로 안내하세요.",
+    "metadata": {
+      "category": "네트워크",
+      "scenario": "와이파이 연결 해결책",
+      "step": 2,
+      "keywords": ["와이파이", "해결", "재시작", "재연결"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "password_001",
+    "text_content": "비밀번호 재설정 요청을 받으면 먼저 사용자 신원을 확인합니다. '사원번호와 등록된 이메일 주소를 알려주세요'라고 안내합니다.",
+    "metadata": {
+      "category": "계정/인증",
+      "scenario": "비밀번호 재설정",
+      "step": 1,
+      "keywords": ["비밀번호", "패스워드", "재설정", "로그인"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "password_002",
+    "text_content": "비밀번호 재설정 절차: 1) 신원 확인 완료 2) 임시 비밀번호 발급 3) 이메일로 전송 4) 최초 로그인 시 새 비밀번호 설정 안내 순서로 진행합니다.",
+    "metadata": {
+      "category": "계정/인증", 
+      "scenario": "비밀번호 재설정 절차",
+      "step": 2,
+      "keywords": ["임시비밀번호", "재설정절차", "이메일"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "email_001",
+    "text_content": "이메일 접속 불가 문의를 받으면 브라우저와 앱 중 어디서 문제가 발생하는지 확인합니다. '웹 브라우저에서도 같은 문제가 발생하나요?'라고 물어보세요.",
+    "metadata": {
+      "category": "이메일/업무시스템",
+      "scenario": "이메일 접속 불가",
+      "step": 1,
+      "keywords": ["이메일", "아웃룩", "outlook", "접속", "로그인"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "email_002",
+    "text_content": "아웃룩 설정 확인 방법: 1) 서버 설정 확인 (IMAP/POP3) 2) 포트 번호 확인 3) SSL 설정 확인 4) 계정 정보 재입력을 순서대로 안내합니다.",
+    "metadata": {
+      "category": "이메일/업무시스템",
+      "scenario": "아웃룩 설정 문제",
+      "step": 2,
+      "keywords": ["아웃룩설정", "서버설정", "IMAP", "POP3"],
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "printer_001",
+    "text_content": "프린터 연결 문제를 받으면 먼저 물리적 연결 상태를 확인합니다. 'USB 케이블이 제대로 연결되어 있나요? 프린터 전원이 켜져 있나요?'라고 확인하세요.",
+    "metadata": {
+      "category": "하드웨어",
+      "scenario": "프린터 연결 불가",
+      "step": 1,
+      "keywords": ["프린터", "인쇄", "연결", "USB"],
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "printer_002",
+    "text_content": "프린터 드라이버 재설치 방법: 1) 기존 프린터 드라이버 제거 2) 제조사 홈페이지에서 최신 드라이버 다운로드 3) 관리자 권한으로 설치 4) 컴퓨터 재시작을 안내합니다.",
+    "metadata": {
+      "category": "하드웨어",
+      "scenario": "프린터 드라이버 문제",
+      "step": 2,
+      "keywords": ["프린터드라이버", "재설치", "다운로드"],
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "software_001",
+    "text_content": "소프트웨어 설치 오류 문의를 받으면 오류 메시지를 정확히 확인합니다. '어떤 프로그램을 설치하려고 하셨나요? 정확한 오류 메시지를 알려주세요'라고 물어보세요.",
+    "metadata": {
+      "category": "소프트웨어",
+      "scenario": "소프트웨어 설치 오류",
+      "step": 1,
+      "keywords": ["소프트웨어", "설치", "오류", "프로그램"],
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "software_002",
+    "text_content": "소프트웨어 설치 문제 해결: 1) 관리자 권한으로 실행 2) 이전 버전 완전 제거 3) 안티바이러스 일시 해제 4) Windows 업데이트 확인을 순서대로 시도해보라고 안내합니다.",
+    "metadata": {
+      "category": "소프트웨어",
+      "scenario": "소프트웨어 설치 해결책",
+      "step": 2,
+      "keywords": ["관리자권한", "제거", "안티바이러스", "윈도우업데이트"],
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "slow_001",
+    "text_content": "컴퓨터 속도 저하 문의를 받으면 언제부터 느려졌는지 확인합니다. '언제부터 느려지기 시작했나요? 특정 프로그램을 사용할 때만 그런가요?'라고 물어보세요.",
+    "metadata": {
+      "category": "성능",
+      "scenario": "컴퓨터 속도 저하",
+      "step": 1,
+      "keywords": ["느림", "속도", "성능", "컴퓨터"],
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "slow_002",
+    "text_content": "컴퓨터 속도 개선 방법: 1) 작업 관리자에서 리소스 사용량 확인 2) 불필요한 시작 프로그램 해제 3) 디스크 정리 및 조각 모음 4) 바이러스 검사 실행을 안내합니다.",
+    "metadata": {
+      "category": "성능",
+      "scenario": "컴퓨터 속도 개선",
+      "step": 2,
+      "keywords": ["작업관리자", "시작프로그램", "디스크정리", "바이러스검사"],
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "virus_001",
+    "text_content": "바이러스 의심 신고를 받으면 현재 증상을 자세히 확인합니다. '어떤 증상이 나타나나요? 팝업이 뜨거나 프로그램이 느려지나요?'라고 물어보세요.",
+    "metadata": {
+      "category": "보안",
+      "scenario": "바이러스 의심",
+      "step": 1,
+      "keywords": ["바이러스", "악성코드", "보안", "팝업"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "virus_002", 
+    "text_content": "바이러스 대응 절차: 1) 즉시 인터넷 연결 차단 2) 안티바이러스 프로그램으로 전체 스캔 3) 악성코드 제거 4) 중요 파일 백업 상태 확인 5) 필요시 보안팀 연락을 안내합니다.",
+    "metadata": {
+      "category": "보안",
+      "scenario": "바이러스 대응",
+      "step": 2,
+      "keywords": ["인터넷차단", "전체스캔", "악성코드제거", "백업"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "file_001",
+    "text_content": "파일 복구 요청을 받으면 언제 삭제되었는지와 어디에 저장되어 있었는지 확인합니다. '언제 삭제하셨나요? 휴지통을 확인해보셨나요?'라고 물어보세요.",
+    "metadata": {
+      "category": "파일관리",
+      "scenario": "파일 복구",
+      "step": 1,
+      "keywords": ["파일", "복구", "삭제", "휴지통"],
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "file_002",
+    "text_content": "파일 복구 방법: 1) 휴지통에서 복구 시도 2) 이전 버전 복원 기능 사용 3) 백업 저장소 확인 4) 파일 복구 프로그램 사용을 순서대로 안내합니다.",
+    "metadata": {
+      "category": "파일관리",
+      "scenario": "파일 복구 방법",
+      "step": 2,
+      "keywords": ["휴지통복구", "이전버전", "백업", "복구프로그램"],
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "vpn_001",
+    "text_content": "VPN 연결 문제를 받으면 어떤 VPN 클라이언트를 사용하는지 확인합니다. '회사에서 제공한 VPN 프로그램을 사용하고 계신가요? 어떤 오류가 나타나나요?'라고 물어보세요.",
+    "metadata": {
+      "category": "네트워크",
+      "scenario": "VPN 연결 문제",
+      "step": 1,
+      "keywords": ["VPN", "원격접속", "연결", "클라이언트"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "vpn_002",
+    "text_content": "VPN 연결 해결 방법: 1) VPN 클라이언트 재시작 2) 인터넷 연결 상태 확인 3) 방화벽 설정 확인 4) VPN 서버 상태 확인 5) IT 관리자에게 연락을 안내합니다.",
+    "metadata": {
+      "category": "네트워크", 
+      "scenario": "VPN 연결 해결",
+      "step": 2,
+      "keywords": ["VPN재시작", "방화벽", "서버상태", "IT관리자"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "update_001",
+    "text_content": "Windows 업데이트 문제를 받으면 현재 어떤 상황인지 확인합니다. '업데이트가 중간에 멈췄나요? 오류 코드가 표시되나요?'라고 물어보세요.",
+    "metadata": {
+      "category": "시스템",
+      "scenario": "Windows 업데이트 문제",
+      "step": 1,
+      "keywords": ["윈도우", "업데이트", "오류", "멈춤"],
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "update_002",
+    "text_content": "Windows 업데이트 문제 해결: 1) Windows 업데이트 문제 해결사 실행 2) 업데이트 서비스 재시작 3) SFC 스캔 실행 4) 수동 업데이트 다운로드를 순서대로 안내합니다.",
+    "metadata": {
+      "category": "시스템",
+      "scenario": "Windows 업데이트 해결",
+      "step": 2,
+      "keywords": ["문제해결사", "서비스재시작", "SFC스캔", "수동업데이트"],
+      "priority": "medium"
+    }
+  },
+  {
+    "id": "remote_001",
+    "text_content": "원격 지원 요청을 받으면 먼저 문제의 긴급도를 확인합니다. '업무에 지장이 있는 긴급한 문제인가요? 어떤 작업을 하려고 하시는 건가요?'라고 물어보세요.",
+    "metadata": {
+      "category": "원격지원",
+      "scenario": "원격 지원 요청",
+      "step": 1,
+      "keywords": ["원격지원", "원격", "긴급", "업무"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "remote_002",
+    "text_content": "원격 지원 절차: 1) 사용자 신원 확인 2) 원격 접속 프로그램 설치 안내 3) 접속 코드 공유 4) 화면 공유 후 문제 해결 5) 해결 완료 후 접속 종료를 진행합니다.",
+    "metadata": {
+      "category": "원격지원",
+      "scenario": "원격 지원 절차",
+      "step": 2,
+      "keywords": ["신원확인", "원격접속", "접속코드", "화면공유"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "general_001",
+    "text_content": "모든 기술 지원은 친절하고 차근차근 설명하는 어조로 진행해야 합니다. 사용자의 기술 수준을 파악하고 그에 맞는 설명을 제공하며, 해결되지 않으면 추가 지원을 안내합니다.",
+    "metadata": {
+      "category": "일반",
+      "scenario": "기본 응대 원칙",
+      "step": 0,
+      "keywords": ["친절", "차근차근", "기술수준", "추가지원"],
+      "priority": "high"
+    }
+  },
+  {
+    "id": "general_002",
+    "text_content": "복잡한 기술 문제나 하드웨어 교체가 필요한 경우 'IT 관리자에게 연결해드리겠습니다' 또는 '현장 지원이 필요한 문제로 보입니다'라고 안내하고 적절한 부서로 연결합니다.",
+    "metadata": {
+      "category": "일반",
+      "scenario": "에스컬레이션",
+      "step": 0,
+      "keywords": ["IT관리자", "현장지원", "하드웨어교체", "에스컬레이션"],
+      "priority": "medium"
+    }
+  }
+]

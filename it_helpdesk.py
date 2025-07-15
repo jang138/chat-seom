@@ -75,9 +75,8 @@ def answer(user_input, chat_history, category, api_key):
     return result['answer']
 
 def load_manual(db):
-    if not os.path.exists("it_helpdesk_manual.json"):
-        st.error("매뉴얼 파일 없음")
-        return
+    with open("it_helpdesk_manual.json", 'r', encoding='utf-8') as f:
+        data = json.load(f)
     
     with open("it_helpdesk_manual.json", 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -144,15 +143,7 @@ if prompt := st.chat_input("문제 설명"):
         st.markdown(prompt)
     
     with st.chat_message("assistant"):
-        if st.session_state.api_key:
-            try:
-                response = get_response(prompt, st.session_state.messages[:-1], st.session_state.api_key)
-                st.markdown(response)
-            except Exception as e:
-                response = f"오류: {e}"
-                st.markdown(response)
-        else:
-            response = "API 키 없음"
-            st.markdown(response)
+        response = get_response(prompt, st.session_state.messages[:-1], st.session_state.api_key)
+        st.markdown(response)
     
     st.session_state.messages.append({"role": "assistant", "content": response})

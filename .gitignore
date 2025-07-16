@@ -1,8 +1,10 @@
 # 환경 변수 파일
 .env
 
-# 테스트 폴더
+# 테스트
 test/
+test_*
+**/test_*
 
 # Python 관련
 __pycache__/

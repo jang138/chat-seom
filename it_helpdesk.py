@@ -148,5 +148,4 @@ if prompt := st.chat_input("문제 설명"):
     with st.chat_message("assistant"):
         response = get_response(prompt, st.session_state.messages[:-1], st.session_state.api_key)
         st.markdown(response)
-    
-    st.session_state.messages.append({"role": "assistant", "content": response})
+        st.session_state.messages.append({"role": "assistant", "content": response})

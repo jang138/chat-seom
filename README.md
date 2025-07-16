@@ -41,7 +41,7 @@ streamlit run it_helpdesk.py
 - **LLM**: Upstage Solar API (mini + pro)
 - **벡터 DB**: ChromaDB
 - **임베딩**: solar-embedding-1-large
-- **프레임워크**: LangChain
+- **라이브러리**: LangChain
 - **UI**: Streamlit
 
 ## 💻 사용 예시

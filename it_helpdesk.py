@@ -10,6 +10,7 @@ from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
+from faq_manager import save_faq_candidates, load_faq_candidates, add_faq_candidate
 from keywords import (
     GREETING_KEYWORDS,
     CASUAL_KEYWORDS,
@@ -196,19 +197,28 @@ def handle_new(user_input, chat_history, api_key):
     chain = prompt | chat
     result = chain.invoke({"input": user_input, "chat_history": history})
 
-    # FAQ 후보 등록
-    faq_candidate = {
-        "question": user_input,
-        "generated_answer": result.content,
-        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        "status": "pending_review",
-    }
+    # FAQ 후보 생성
+    faq_candidate = add_faq_candidate(user_input, result.content)
 
-    # 세션 상태에 FAQ 후보 저장
-    if "faq_candidates" not in st.session_state:
-        st.session_state.faq_candidates = []
-
+    # 세션 상태에 추가
     st.session_state.faq_candidates.append(faq_candidate)
+
+    # 파일에 저장
+    save_faq_candidates(st.session_state.faq_candidates)
+
+    # # FAQ 후보 등록
+    # faq_candidate = {
+    #     "question": user_input,
+    #     "generated_answer": result.content,
+    #     "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    #     "status": "pending_review",
+    # }
+
+    # # 세션 상태에 FAQ 후보 저장
+    # if "faq_candidates" not in st.session_state:
+    #     st.session_state.faq_candidates = []
+
+    # st.session_state.faq_candidates.append(faq_candidate)
 
     print(
         f"""
@@ -271,6 +281,12 @@ def handle_casual_chat(user_input):
         return "흥미로운 이야기네요! 😊 그런데 IT 관련 문제는 없으신가요?"
 
 
+def init_faq_system():
+    if "faq_candidates" not in st.session_state:
+        st.session_state.faq_candidates = load_faq_candidates()
+    return True
+
+
 @st.cache_resource
 def init_db():
     """앱 시작 시 한 번만 실행되는 DB 초기화"""
@@ -302,6 +318,7 @@ if "api_key" not in st.session_state:
 
 if st.session_state.api_key:
     db = init_db()
+    init_faq_system()
     if db is None:
         st.error("매뉴얼 로딩 실패")
 

@@ -30,8 +30,8 @@ def answer(user_input, chat_history, category, api_key):
     
     db = Chroma(persist_directory="chroma_db", embedding_function=embeddings)
     
-    if db._collection.count() == 0:
-        load_manual(db)
+    # if db._collection.count() == 0:
+    #     load_manual(db)
     
     retriever = db.as_retriever(search_kwargs={"k": 3})
     
@@ -93,13 +93,32 @@ def load_manual(db):
         docs.append(doc)
     
     db.add_documents(docs)
-    st.success(f"매뉴얼 {len(docs)}개 로딩완료")
+    print(f"{len(docs)}개 문서 벡터 DB에 추가 완료")
 
 def get_response(user_input, chat_history, api_key):
     category = classify(user_input, api_key)
     response = answer(user_input, chat_history, category, api_key)
     return response
 
+@st.cache_resource
+def init_db():
+    """앱 시작 시 한 번만 실행되는 DB 초기화"""
+    api_key = os.getenv("UPSTAGE_API_KEY")
+    if not api_key:
+        print("API KEY를 찾을 수 없습니다.")
+        return None
+    
+    embeddings = UpstageEmbeddings(api_key=api_key, model="solar-embedding-1-large")
+    db = Chroma(persist_directory="chroma_db", embedding_function=embeddings)
+
+    if db._collection.count() == 0:
+        load_manual(db)
+        print("✅ 매뉴얼 로딩 완료!")
+    else:
+        print("✅ 기존 매뉴얼 데이터 로딩 완료")
+        
+    return db
+        
 # UI 시작 부분
 st.set_page_config(page_title="IT 헬프데스크", page_icon="💻")
 
@@ -108,6 +127,11 @@ if "messages" not in st.session_state:
 
 if "api_key" not in st.session_state:
     st.session_state.api_key = os.getenv("UPSTAGE_API_KEY")
+    
+if st.session_state.api_key:
+    db = init_db()
+    if db is None:
+        st.error("매뉴얼 로딩 실패")
 
 st.title("💻 IT 헬프데스크")
 

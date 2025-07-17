@@ -67,14 +67,44 @@ def classify(user_input, api_key):
         return "skip"
 
 
+def load_manual(db):
+    with open("it_helpdesk_manual.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    docs = []
+    for item in data:
+        doc = Document(
+            page_content=item["text_content"],
+            metadata={
+                "id": item["id"],
+                "category": item["metadata"]["category"],
+                "scenario": item["metadata"]["scenario"],
+                "keywords": ", ".join(item["metadata"]["keywords"]),
+                "priority": item["metadata"]["priority"],
+            },
+        )
+        docs.append(doc)
+
+    db.add_documents(docs)
+    print(f"{len(docs)}개 문서 벡터 DB에 추가 완료")
+
+
+def get_response(user_input, chat_history, api_key):
+    classification = classify(user_input, api_key)
+
+    # if classification == "existing":
+    #     return handle_existing(user_input, chat_history, api_key)
+    # elif classification == "new":
+    #     return handle_new(user_input, chat_history, api_key)
+    # else:  # skip
+    #     return handle_skip(user_input, api_key)
+
+
 def answer(user_input, chat_history, category, api_key):
     chat = ChatUpstage(api_key=api_key, model="solar-pro")
     embeddings = UpstageEmbeddings(api_key=api_key, model="solar-embedding-1-large")
 
     db = Chroma(persist_directory="chroma_db", embedding_function=embeddings)
-
-    # if db._collection.count() == 0:
-    #     load_manual(db)
 
     retriever = db.as_retriever(search_kwargs={"k": 3})
 
@@ -123,34 +153,6 @@ def answer(user_input, chat_history, category, api_key):
 
     result = rag_chain.invoke({"input": user_input, "chat_history": history})
     return result["answer"]
-
-
-def load_manual(db):
-    with open("it_helpdesk_manual.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    docs = []
-    for item in data:
-        doc = Document(
-            page_content=item["text_content"],
-            metadata={
-                "id": item["id"],
-                "category": item["metadata"]["category"],
-                "scenario": item["metadata"]["scenario"],
-                "keywords": ", ".join(item["metadata"]["keywords"]),
-                "priority": item["metadata"]["priority"],
-            },
-        )
-        docs.append(doc)
-
-    db.add_documents(docs)
-    print(f"{len(docs)}개 문서 벡터 DB에 추가 완료")
-
-
-def get_response(user_input, chat_history, api_key):
-    category = classify(user_input, api_key)
-    response = answer(user_input, chat_history, category, api_key)
-    return response
 
 
 @st.cache_resource

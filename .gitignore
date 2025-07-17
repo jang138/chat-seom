@@ -49,6 +49,8 @@ data/
 .DS_Store
 
 # 프로젝트 특정 파일
+faq_candidates.json
+approved_faqs.json
 conversations/
 faqs/
 chroma_db/

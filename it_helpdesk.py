@@ -22,6 +22,20 @@ load_dotenv()
 
 
 def classify(user_input, api_key):
+
+    # # 1. 먼저 ChromaDB에서 유사한 FAQ 검색
+    # embeddings = UpstageEmbeddings(api_key=api_key, model="solar-embedding-1-large")
+    # db = Chroma(persist_directory="chroma_db", embedding_function=embeddings)
+
+    # results = db.similarity_search(user_input, k=1)
+
+    # # 2. 유사도가 높으면 existing으로 분류
+    # if results and results[0].metadata.get("type") in [
+    #     "approved_faq",
+    #     "user_generated_faq",
+    # ]:
+    #     return "existing"
+
     chat = ChatUpstage(api_key=api_key, model="solar-mini")
 
     prompt = f"""당신은 IT 헬프데스크 상담사입니다.
@@ -86,6 +100,23 @@ def load_manual(db):
             },
         )
         docs.append(doc)
+
+    # 2. 승인된 FAQ도 로드
+    if os.path.exists("approved_faqs.json"):
+        try:
+            with open("approved_faqs.json", "r", encoding="utf-8") as f:
+                approved_faqs = json.load(f)
+
+            for faq in approved_faqs:
+                doc = Document(...)
+                docs.append(doc)
+
+            print(f"승인된 FAQ {len(approved_faqs)}개 추가")
+
+        except Exception as e:
+            print(f"승인된 FAQ 로드 실패: {e}")
+    else:
+        print("💡 승인된 FAQ 파일 없음")
 
     db.add_documents(docs)
     print(f"{len(docs)}개 문서 벡터 DB에 추가 완료")

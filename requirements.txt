@@ -4,3 +4,4 @@ langchain-community
 langchain-upstage
 python-dotenv
 pysqlite3-binary
+chromadb==0.4.15

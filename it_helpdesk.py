@@ -20,6 +20,9 @@ from keywords import (
 
 load_dotenv()
 
+# streamlit secrets 사용 시 활성화
+os.environ["UPSTAGE_API_KEY"] = st.secrets["UPSTAGE_API_KEY"]
+
 
 def classify(user_input, api_key):
 

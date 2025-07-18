@@ -16,7 +16,7 @@ from langchain_core.documents import Document
 load_dotenv()
 
 # streamlit secrets 사용 시 활성화
-os.environ["UPSTAGE_API_KEY"] = st.secrets["UPSTAGE_API_KEY"]
+# os.environ["UPSTAGE_API_KEY"] = st.secrets["UPSTAGE_API_KEY"]
 
 APPROVED_FAQS_FILE = "approved_faqs.json"
 

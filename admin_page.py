@@ -1,11 +1,22 @@
+__import__("pysqlite3")
+import sys
+
+sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
+
 import streamlit as st
 import json
 import os
+from dotenv import load_dotenv
 from datetime import datetime
 from faq_manager import load_faq_candidates, save_faq_candidates, clear_all_candidates
 from langchain_upstage import UpstageEmbeddings
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
+
+load_dotenv()
+
+# streamlit secrets 사용 시 활성화
+os.environ["UPSTAGE_API_KEY"] = st.secrets["UPSTAGE_API_KEY"]
 
 APPROVED_FAQS_FILE = "approved_faqs.json"
 

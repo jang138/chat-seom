@@ -51,6 +51,8 @@ data/
 # 프로젝트 특정 파일
 faq_candidates.json
 approved_faqs.json
+classification_*
+performance_*
 conversations/
 faqs/
 chroma_db/
